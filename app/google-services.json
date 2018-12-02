@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "330999366786",
+    "firebase_url": "https://btlock-4adaa.firebaseio.com",
+    "project_id": "btlock-4adaa",
+    "storage_bucket": "btlock-4adaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330999366786:android:4d86776343611126",
+        "android_client_info": {
+          "package_name": "com.amitai.btlock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330999366786-7frot9othrs6jfaal285kom4b5j0hdl9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amitai.btlock",
+            "certificate_hash": "bd07c60316ef5715a2889017ebaa8aa26f24dc5d"
+          }
+        },
+        {
+          "client_id": "330999366786-ijnkh3ap86gonme9k2g0dnnvs1cbsea3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc6l5DLANjC8hd7qWpokwNpWSvyXEtVxA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330999366786-ijnkh3ap86gonme9k2g0dnnvs1cbsea3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
