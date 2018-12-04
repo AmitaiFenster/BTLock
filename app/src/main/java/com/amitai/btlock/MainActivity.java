@@ -1,7 +1,6 @@
 package com.amitai.btlock;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,12 +15,13 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int REQUEST_ENABLE_BT = 11;
-    private BluetoothAdapter mBluetoothAdapter;
+    private Bundle savedInstanceState;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,26 +41,31 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new DevicesFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_devices);
-        }
-
-        mBluetoothAdapter = BluetoothHelper.setupBluetooth(this);
+        if(BluetoothHelper.enableBluetooth(this))
+            showFragment();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // User chose not to enable Bluetooth.
-        if (requestCode == REQUEST_ENABLE_BT && resultCode == Activity.RESULT_CANCELED) {
+        if (requestCode == Constants.REQUEST_ENABLE_BT && resultCode == Activity.RESULT_CANCELED) {
             finish();
             return;
         }
+        if (requestCode == Constants.REQUEST_ENABLE_BT && resultCode == Activity.RESULT_OK)
+            showFragment();
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void showFragment() {
+        if (this.savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new DevicesFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_devices);
+        }
     }
 
     @Override

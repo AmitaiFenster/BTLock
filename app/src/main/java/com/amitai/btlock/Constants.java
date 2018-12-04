@@ -20,4 +20,11 @@ public class Constants {
      * Location.
      */
     public static final int REQUEST_ENABLE_LOCATION = 2;
+    /**
+     * Use this Tag for all Log prints in the context of Bluetooth DevicesScan.
+     */
+    public static final String TAG_DavicesScan = "DevicesScan";
+
+    public static final int REQUEST_ENABLE_BT = 11;
+
 }
